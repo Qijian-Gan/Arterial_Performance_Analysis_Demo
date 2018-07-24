@@ -1,0 +1,28 @@
+version: 0.2
+
+env:
+  variables:
+    BUCKET: "arterial-health-website"
+    APILN: "arterial-health-website-request"
+    BACKLN: "arterial-health-website-update-S3"
+    APILC: "backend/lambda/front-facing-lambda.zip"
+    BACKLC: "backend/lambda/auxiliary-lambda.zip"
+
+            
+phases:
+  pre_build:
+    commands:
+      - echo "Pre-build phase"
+      - apt-get update -y
+      - apt-get install -y zip
+  build:
+    commands:
+      - echo "Build phase"
+      - (cd backend/lambda && exec zip -f "$APILC") || if [[ $? == 12 ]]; then true; fi
+      - (cd backend/lambda && exec zip -f "$BACKLC") || if [[ $? == 12 ]]; then true; fi
+  post_build:
+    commands:
+      - echo "Post-build phase"
+      - aws s3 sync . "s3://$BUCKET" --exclude '.git*' --exclude 'buildspec.yml'
+      - aws lambda update-function-code --function-name "$APILN" --s3-bucket "$BUCKET" --s3-key "$APILC"
+      - aws lambda update-function-code --function-name "$BACKLN" --s3-bucket "$BUCKET" --s3-key "$BACKLC"

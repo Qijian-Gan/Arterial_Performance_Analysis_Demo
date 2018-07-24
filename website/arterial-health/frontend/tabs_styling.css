@@ -1,0 +1,832 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    overflow: none;
+    height: 100%;
+    width: 100%;
+    background-image: url("berk.PNG");
+}
+
+ul {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 95%;
+    width: 100%;
+}
+
+#searchbar {
+    width: 100%;
+}
+
+
+/* for loader */
+/* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript,
+if it's not present, don't show loader */
+
+#loading {
+    display: block;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100px !important;
+	height: 100px !important;
+	z-index: 9999;
+	background: url(https://cdn.dribbble.com/users/421466/screenshots/2377950/drops-400px.gif) center no-repeat #fff;
+}
+
+#slider-range {
+    height: 1.5vh !important;
+    width: 30vw !important;
+    border-radius: 1px !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    color: #f6931f;
+    font-weight: bold;
+    margin-left: 18px;
+    margin-top: 3px;
+    padding: 0px !important;
+}
+
+.banner {
+    justify-content: center; /* align horizontal */
+    
+    background: #f4f4f4;
+    margin-right: 3px;
+    text-decoration: none;
+    text-align: center;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: #494949;
+    
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4vw;
+    letter-spacing: 0.35vw;
+    font-weight: 500;
+    text-shadow: 2px 1px silver;
+    
+    width: 35%;
+    margin: auto;
+    position: absolute;
+    top: 18px;
+    
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+
+}
+
+#amount {
+    display: inline;
+}
+.ui-slider .ui-slider-handle {
+    height: 3vh;
+    width: 5px;
+    padding: 0px !important;
+
+}
+
+#slider-range .ui-widget-header {
+    background: gray !important;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -.5em;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0px !important;
+    margin-top: 4px !important;
+
+}
+
+.ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%;
+    padding: 0px !important;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 0px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 0px;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 0px;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    border-bottom-left-radius: 0px;
+}
+
+
+.tabulator {
+    position: relative;
+    border: 0px !important;
+    background-color: transparent !important;
+    font-size: 14px;
+    
+    text-align: left;
+    overflow: hidden;
+    transform: translatez(0);
+}
+
+.plot {
+    width: 59vw;
+    height: 71.9vh !important;
+    margin-top: 7vh;
+    margin-left: 35.5vw;
+    z-index: 0;
+
+    position: absolute;
+
+    padding: 1rem;
+
+}
+
+.dropdown {
+    width: 100% !important;
+    height: 5% !important;
+    top: 0 !important;
+    padding: 0 !important;
+
+    opacity: 1 !important;
+    border-radius: 0 !important;
+    border-width: 0 !important;
+
+    border-bottom-width: 5px !important;
+
+    background-color: white !important;
+
+}
+
+.surrounding {
+    width: 100% !important;
+    height: 50% !important;
+
+    top: 5% !important;
+    padding: 0 !important;
+
+    opacity: 0;
+    border-radius: 0 !important;
+    border-width: 0 !important;
+
+    border-bottom-width: 5px !important;
+
+}
+
+.hideit {
+	width: 0px !important;
+    height: 0px !important;
+
+    left: 0 !important;
+    top: 0 !important;
+    padding: 0 !important;
+
+    opacity:0;
+    border-radius: 0 !important;
+    border-width: 0 !important;
+
+    -webkit-transition: height 1s ease; /* For Safari 3.1 to 6.0 */
+    transition: height 1s ease;
+    }
+
+.box {
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(0, 0, 0, .5) !important;
+}
+
+.filter {
+    width: 34vw !important;
+    height: 35vh !important;
+    z-index: 8;
+    top: .3rem;
+    left: 24.5vw !important;
+    padding: 0px !important;
+}
+
+.small_map {
+    width: 23vw !important;
+    height: 35vh !important;
+    z-index: 8;
+    top: .3rem !important;
+    left: .45rem !important;
+    border-color: #c97480 !important;
+}
+
+
+
+#mapid {
+    width: 60vw;
+    height: 78vh;
+    position: absolute;
+    z-index: 5;
+    top: 2rem;
+    border-style: ridge;
+    border-width: 7px;
+    border-color: #c97480;
+}
+
+.menu {
+    background: white;
+    width: 25vw;
+    height: 78vh;
+    position: absolute;
+    margin-top: 4vh;
+    margin-left: 5vw;
+    transition: all 1s ease;
+    border-style: ridge;
+    border-width: 7px;
+    border-color: #494949;
+}
+.tabs {
+    width: 50%;
+    height: 50%;
+    margin-top: 10vh;
+    margin-left: 35vw;
+    position: relative;
+}
+
+.tabs1 {
+    width: 50%;
+    height: 50%;
+    margin-top: 10vh;
+    margin-left: 35vw;
+    position: relative;
+}
+
+span.view {
+	/*no jump */
+	display: none;
+}
+
+.map_tab div {
+    left: 0;
+    padding: 0.2rem;
+    font-size: 2;
+    font-family: 'Roboto', sans-serif;
+    color: black !important;
+    line-height: 1.2;
+    background: transparent !important;
+
+}
+.map_tab .tab-e {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+
+    margin-top: -.25rem;
+    float: left;
+    width: 10vw;
+    height: 2.3rem;
+    min-width: 85px;
+    background: #b0b1b2;
+    margin-right: 3px;
+    text-decoration: none;
+    color: gray;
+    text-align: center;
+    position: relative;
+    border-radius: 5px 5px 0 0;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: #494949;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4vw;
+    letter-spacing: 0.5vw;
+    font-weight: 500;
+    text-shadow: 2px 1px silver;
+    padding-top: 1px;
+    padding-left: 0.5vw;
+ }
+
+.tab div {
+    width: 60vw;
+    height: 78vh;
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-family: carme, sans-serif;
+    color: #fff;
+    line-height: 1.2;
+    z-index: 5;
+    opacity:0;
+    border-style: ridge;
+    border-width: 7px;
+    border-color: #494949;
+    background: white;
+
+}
+
+.tab .tab-e {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+
+    margin-top: -.25rem;
+    float: left;
+    width: 10vw;
+    height: 2.3rem;
+    min-width: 85px;
+    background: #b0b1b2;
+    margin-right: 3px;
+    text-decoration: none;
+    color: gray;
+    text-align: center;
+    position: relative;
+    border-radius: 5px 5px 0 0;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: #494949;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4vw;
+    letter-spacing: 0.5vw;
+    font-weight: 500;
+    text-shadow: 2px 1px silver;
+    padding-top: 1px;
+    padding-left: 0.5vw;
+ }
+
+@keyframes wiggle{
+    0% { transform: rotate(0deg);}
+    100% {  transform: translateY(px);}
+}
+
+
+a.tab-e:hover {
+    color: #bbb;
+    -webkit-animation: wiggle .2s ease forwards;
+    animation: wiggle .2s ease forwards;
+}
+
+.view:target + .tab div {
+    opacity: 1;
+    color: black;
+ }
+
+.view:target + .map_tab div {
+    opacity: 1;
+    color: black;
+
+}
+
+.view:target + .tab .tab-e {
+    background: white;
+    color: black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+
+
+}
+
+.view:target + .map_tab .tab-e {
+    background: white;
+    color: black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    border-color: #c97480;
+
+}
+
+#range-text {
+    padding-top: 1vh;
+    padding-left: 1vw;
+}
+
+@media screen and (max-width:370px) {
+    .tabs {
+        width: 100%;
+        min-width: 370px;
+        margin: 2.5rem 0;
+    }
+    .tab div {
+        font-size: 1rem;
+        line-height: 1.1;
+        padding: 1rem 5px;
+        width: 100%;
+    }
+    .map_tab div {
+        font-size: 1rem;
+        line-height: 1.1;
+        padding: 1rem 5px;
+        width: 100%;
+    }
+    .tab .tab-e {
+		font-size: 1rem;
+		padding: .5rem 0;
+        text-align: center;
+        line-height: 1.5rem;
+        width: 25%;
+        margin-right: 0;
+
+	}
+
+}
+
+
+/* stuff for dropdown performance metrics */
+.container {
+  margin: 80px auto;
+  width: 15vw;
+  text-align: center;
+}
+
+.container > .dropdown {
+    margin: 0 20px;
+    vertical-align: top;
+    height: 5vh !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    border-color: #494949 !important;
+    width: 20vw !important;
+    margin-top: 7.7vh !important;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 28px;
+  width: 150px;
+  background: #f2f2f2;
+  border: 1px solid;
+  border-color: white #f7f7f7 whitesmoke;
+  border-radius: 3px;
+  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.dropdown:before, .dropdown:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 9px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 4px dashed;
+  border-color: #888888 transparent;
+  pointer-events: none;
+}
+
+.dropdown:before {
+  border-bottom-style: solid;
+  border-top: none;
+}
+
+.dropdown:after {
+  margin-top: 7px;
+  border-top-style: solid;
+  border-bottom: none;
+}
+
+.dropdown-select {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 6px 8px 6px 10px;
+  height: 5vh;
+  line-height: 17px;
+  font-size: 17px;
+  color: #62717a;
+  text-shadow: 0 1px white;
+  background: #f2f2f2; /* Fallback for IE 8 */
+  background: rgba(0, 0, 0, 0) !important; /* "transparent" doesn't work with Opera */
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.dropdown-select:focus {
+  z-index: 3;
+  width: 100%;
+  color: #394349;
+  outline: 2px solid #49aff2;
+  outline: 2px solid -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.dropdown-select > option {
+  margin: 3px;
+  padding: 6px 8px;
+  text-shadow: none;
+  background: #f2f2f2;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Fix for IE 8 putting the arrows behind the select element. */
+
+.lt-ie9 .dropdown {
+  z-index: 1;
+}
+
+.lt-ie9 .dropdown-select {
+  z-index: -1;
+}
+
+.lt-ie9 .dropdown-select:focus {
+  z-index: 3;
+}
+
+/* Dirty fix for Firefox adding padding where it shouldn't. */
+
+@-moz-document url-prefix() {
+  .dropdown-select {
+    padding-left: 6px;
+  }
+}
+
+.select-date {
+    border: none !important;
+    width: 19vw !important;
+    height: 3vh !important;
+    top: 7.5vh !important;
+    padding: 0 !important;
+    margin: 0!important;
+}
+
+#start-date {
+    left: 1.2rem !important;
+}
+
+#end-date {
+    left: 25rem !important;
+}
+
+/* for graph checkboxes */
+
+
+input[type="radio"] {
+    background-color: #ddd;
+    background-image: -webkit-linear-gradient(0deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%),
+                      -webkit-linear-gradient(90deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%);
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.8),
+                0 0 0 1px hsla(0,0%,0%,.6),
+                0 2px 3px hsla(0,0%,0%,.6),
+                0 4px 3px hsla(0,0%,0%,.4),
+                0 6px 6px hsla(0,0%,0%,.2),
+                0 10px 6px hsla(0,0%,0%,.2);
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    margin-right: 50px;
+    position: relative;
+    width: 15px;
+    -webkit-appearance: none;
+
+}
+input[type="radio"]:after {
+    background-color: #444;
+    border-radius: 25px;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
+                0 1px 1px hsla(0,0%,100%,.8);
+    content: '';
+    display: block;
+    height: 7px;
+    left: 4px;
+    position: relative;
+    top: 4px;
+    width: 7px;
+}
+input[type="radio"]:checked:after {
+    background-color: #f66;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
+                inset 0 2px 2px hsla(0,0%,100%,.4),
+                0 1px 1px hsla(0,0%,100%,.8),
+                0 0 2px 2px hsla(0,70%,70%,.4);
+}
+
+.checkbox {
+    top: 3.4rem !important;
+    left: 1.3rem !important;
+}
+
+
+#plot2 {
+    position: absolute;
+    top: 10.5rem;
+    left: 2.5rem;
+    font-size: 2vh;
+}
+
+#bar2 {
+    position: absolute;
+    top: 10.5rem;
+    font-size: 2vh;
+    left: 7rem;
+}
+
+#table2 {
+    position: absolute;
+    top: 10.5rem;
+    font-size: 2vh;
+    left: 11.3rem;
+}
+
+
+
+/* for generate button */
+
+
+#generate{
+    cursor: pointer;
+    border: 3px ridge #ccc;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1vw;
+    letter-spacing: 2px;
+
+    list-style-type: none;
+    width: 26%;
+    text-align: center;
+    left: 22.8vw;
+    top: 2rem;
+    text-shadow: 2px 1px silver;
+    letter-spacing: 4px;
+    padding: 3px 3px 3px 3px;
+    padding-left: 4px;
+    background: #f2f2f2;
+}
+
+#download_csv{
+    cursor: pointer;
+    border: 3px ridge #ccc;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: .9vw;
+    letter-spacing: 1.5px;
+
+    list-style-type: none;
+    width: 26%;
+    text-align: center;
+    left: 22.8vw;
+    top: 2.5rem;
+    text-shadow: 2px 1px silver;
+    letter-spacing: 4px;
+    padding: 3px 3px 3px 3px;
+    padding-left: 4px;
+    background: #f2f2f2;
+}
+
+
+
+#load {
+    cursor: pointer;
+    border: 3px ridge #ccc;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: .9vw;
+    letter-spacing: 1.5px;
+
+    list-style-type: none;
+    width: 26%;
+    text-align: center;
+    left: 22.8vw;
+    top: -9.45rem !important;
+    text-shadow: 2px 1px silver;
+    letter-spacing: 4px;
+    padding: 3px 3px 3px 3px;
+    padding-left: 4px;
+    background: #f2f2f2;
+    margin-top: 9.5px;
+}
+
+.svg-container {
+    left: -15px;
+}
+
+.gradient {
+  position: relative;
+}
+.gradient:before, .gradient:after {
+  position: absolute;
+  bottom: -3px;
+  left: -3px;
+}
+.gradient:before {
+  top: -3px;
+  width: 3px;
+  background-image: -webkit-gradient(linear, 0 100%, 0 0, from(#333), to(transparent));
+  background-image: -webkit-linear-gradient(transparent, #333); background-image: -moz-linear-gradient(transparent, #333);
+}
+.gradient:after {
+  border-color: #333;
+  right: -3px;
+  height: 3px;
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#333), to(transparent)); background-image: -webkit-linear-gradient(left, #333, transparent); background-image: -moz-linear-gradient(left, #333, transparent);
+}
+.gradient:hover:before {
+  top: -3px;
+  width: 3px;
+  background-image: -webkit-gradient(linear, 0 100%, 0 0, from(#ddd), to(transparent));
+  background-image: -webkit-linear-gradient(transparent, #ddd); background-image: -moz-linear-gradient(transparent, #ddd);
+  transition: background-image .5s ease-in-out;
+}
+.gradient:hover:after {
+  right: -3px;
+  height: 3px;
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#ddd), to(transparent)); background-image: -webkit-linear-gradient(left, #ddd, transparent); background-image: -moz-linear-gradient(left, #ddd, transparent);
+  transition: background-image .5s ease-in-out;
+}
+
+
+#generate:hover{
+  border-color: #333;
+   transition: border-color .6s ease-in-out;
+    -webkit-transition: border-color .6s ease-in-out;
+    -moz-transition: border-color .6s ease-in-out;
+}
+
+#download_csv:hover{
+    border-color: #333;
+   transition: border-color .6s ease-in-out;
+    -webkit-transition: border-color .6s ease-in-out;
+    -moz-transition: border-color .6s ease-in-out;
+}
+
+#load:hover{
+    border-color: #333;
+   transition: border-color .6s ease-in-out;
+    -webkit-transition: border-color .6s ease-in-out;
+    -moz-transition: border-color .6s ease-in-out;
+}
+
+#load:focus{
+    border-color: #333;
+    background: #bfbfbf;
+}
+
+#load:active{
+    border-color: #333;
+    background: #bfbfbf;
+}
+
+#download_csv:active,
+#download_csv:focus {
+    border-color: #333;
+}
+
+
+.gradient:active, 
+ .gradient:focus 
+ {
+     border-color: #333;
+     background: 'black';
+  }
+
+
+/* table plot */
+
+#table_view {
+    height: 50%;
+}
+
+
+.cal {
+    background-image: url("Logo.png");
+    width: 260px;
+    height: 11%;
+    position: absolute;
+    left: 5vw;
+    margin-top: -9vh;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: 100%;
+
+    background-repeat: no-repeat;
+
+}
+
+.calpath {
+    background-image: url("calpath.png");
+    width: 150px;
+    height: 11%;
+    position: absolute;
+
+    left: 85vw;
+    margin-top: -9vh;
+    margin-right: 20vw;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
