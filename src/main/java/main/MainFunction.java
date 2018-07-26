@@ -21,8 +21,8 @@ public class MainFunction{
     // Database
     public static String host="jdbc:mysql://localhost:3306/arterial_data_demo?useSSL=false"; // For TCS server
     // Users
-    public static String userName="root";
-    public static String password="!Ganqijian2017";
+    public static String userName="ganqijian";
+    public static String password="!PATH2017ganqijian";
 
     // Variables
     public static Connection con;

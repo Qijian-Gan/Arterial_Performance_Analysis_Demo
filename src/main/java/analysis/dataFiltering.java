@@ -12,6 +12,16 @@ import saveData.saveDataToDatabase;
 public class dataFiltering {
 // This is the class for data filtering
 
+    /**
+     *
+     * @param con Database connection
+     * @param dataInput double[][]
+     * @param detectorID Detector ID
+     * @param year int
+     * @param month int
+     * @param day int
+     * @param interval Time interval (seconds)
+     */
     public static void mainDataFiltering(Connection con, double [][] dataInput, int detectorID, int year, int month, int day, int interval){
 
         // Fill in missing values
@@ -36,8 +46,8 @@ public class dataFiltering {
             this.span=_span; // Set the span for imputation
             this.useMedianOrNot=_useMedianOrNot; // Whether to use the median value or not
         }
-        int span;
-        int useMedianOrNot;
+        protected int span;
+        protected int useMedianOrNot;
     }
 
     public static class SmoothSetting{
@@ -48,10 +58,16 @@ public class dataFiltering {
             this.span=_span; // Set the span for imputation: moving average
             this.method=_method; // Set the method
         }
-        int span;
-        String method;
+        protected int span;
+        protected String method;
     }
 
+    /**
+     *
+     * @param dataInput double [][]
+     * @param smoothSetting SmoothSetting
+     * @return double [][] dataOutput
+     */
     public static double [][] smoothingData(double [][] dataInput, SmoothSetting smoothSetting){
         // This function is used to smooth the input data
 
@@ -92,6 +108,13 @@ public class dataFiltering {
         return dataOutput;
     }
 
+    /**
+     *
+     * @param dataInput double[][]
+     * @param interval Time interval (seconds)
+     * @param imputationSetting ImputationSetting
+     * @return double [][] dataOutput
+     */
     public static double[][] fillInMissingValues(double [][] dataInput, int interval, ImputationSetting imputationSetting){
         // This function is used to fillInMissingValues
 

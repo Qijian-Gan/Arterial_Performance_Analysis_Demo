@@ -10,6 +10,13 @@ import java.util.*;
  */
 public class saveDataToDatabase{
 
+    /**
+     *
+     * @param ps SQL Statement
+     * @param string List of SQL Strings
+     * @param definedSize Predefined size for batch
+     * @return True/false
+     */
     public static boolean insertSQLBatch(Statement ps, List<String> string, int definedSize){
         // This function is used to insert SQL batch
         int curSize=0;
@@ -38,6 +45,12 @@ public class saveDataToDatabase{
         }
     }
 
+    /**
+     *
+     * @param ps SQL Statement
+     * @param string List of SQL Strings
+     * @return True/false
+     */
     public static boolean insertLineByLine(Statement ps, List<String> string){
         // This function is used to insert line by line
 
@@ -51,6 +64,16 @@ public class saveDataToDatabase{
         return true;
     }
 
+    /**
+     *
+     * @param con Database connection
+     * @param dataInput double[][]
+     * @param detectorID Detector ID
+     * @param year int
+     * @param month int
+     * @param day int
+     * @return True/false
+     */
     public static boolean insertProcessedTCSDataToDataBase(Connection con, double [][] dataInput, int detectorID, int year, int month, int day){
         // This function is used to insert processed TCS data to the database
         try {
@@ -73,6 +96,16 @@ public class saveDataToDatabase{
         }
     }
 
+    /**
+     *
+     * @param con Database connection
+     * @param detectorHealthMetrics DetectorHealthMetrics
+     * @param detectorID Detector ID
+     * @param year int
+     * @param month int
+     * @param day int
+     * @return True/false
+     */
     public static boolean insertHealthMeasurementToDataBase(Connection con, DetectorHealthMetrics detectorHealthMetrics,
                                                             int detectorID, int year,int month, int day){
         // This function is used to insert health data into database
@@ -80,9 +113,9 @@ public class saveDataToDatabase{
         try {
             Statement ps=con.createStatement();
             String sql="insert into detector_health values ("+detectorID+","+year+
-                    ","+month+","+day+","+detectorHealthMetrics.MissingRate+","+detectorHealthMetrics.MaxZeroValue+","
-                    +detectorHealthMetrics.HighValueRate+","+detectorHealthMetrics.ConstantOrNot+
-                    ","+detectorHealthMetrics.InconsisRateWithoutSpeed+","+detectorHealthMetrics.Health+");";
+                    ","+month+","+day+","+detectorHealthMetrics.getMissingRate()+","+detectorHealthMetrics.getMaxZeroValue()+","
+                    +detectorHealthMetrics.getHighValueRate()+","+detectorHealthMetrics.getConstantOrNot()+
+                    ","+detectorHealthMetrics.getInconsisRateWithoutSpeed()+","+detectorHealthMetrics.getHealth()+");";
 
             ps.execute(sql);
             return true;

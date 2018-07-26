@@ -1,15 +1,10 @@
 package config;
 
-import java.io.*;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
 
 import Utility.util;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * Created by Qijian_Gan on 9/12/2017.
@@ -38,22 +33,80 @@ public class detectorConfig {
             this.NumOfLanes=_NumOfLanes;
         }
 
-        public String IntName;
-        public int IntID;
-        public String County;
-        public String City;
-        public String RoadName;
-        public String Direction;
-        public int SensorID;
-        public String Movement;
-        public String Status;
-        public String DetourRoute;
-        public double Length;
-        public double DistanceToStopbar;
-        public int NumOfLanes;
+        protected String IntName;
+        protected int IntID;
+        protected String County;
+        protected String City;
+        protected String RoadName;
+        protected String Direction;
+        protected int SensorID;
+        protected String Movement;
+        protected String Status;
+        protected String DetourRoute;
+        protected double Length;
+        protected double DistanceToStopbar;
+        protected int NumOfLanes;
 
+        public String getIntName() {
+            return IntName;
+        }
+
+        public int getIntID() {
+            return IntID;
+        }
+
+        public String getCounty() {
+            return County;
+        }
+
+        public String getCity() {
+            return City;
+        }
+
+        public String getRoadName() {
+            return RoadName;
+        }
+
+        public String getDirection() {
+            return Direction;
+        }
+
+        public int getSensorID() {
+            return SensorID;
+        }
+
+        public String getMovement() {
+            return Movement;
+        }
+
+        public String getStatus() {
+            return Status;
+        }
+
+        public String getDetourRoute() {
+            return DetourRoute;
+        }
+
+        public double getLength() {
+            return Length;
+        }
+
+        public double getDistanceToStopbar() {
+            return DistanceToStopbar;
+        }
+
+        public int getNumOfLanes() {
+            return NumOfLanes;
+        }
     }
 
+    /**
+     *
+     * @param con Database connection
+     * @param organization Organization
+     * @param startDate Start date
+     * @return List<DetectorProperty> detConfigList
+     */
     public static List<DetectorProperty> readDetectorConfigFromDataBase(Connection con,String organization,Date startDate){
         // This function is used to read detector configuration from database
         List<DetectorProperty> detConfigList = new ArrayList<DetectorProperty>();

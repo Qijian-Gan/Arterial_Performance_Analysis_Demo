@@ -26,6 +26,12 @@ public class extractDataToFile{
 
     // ***********************************************************//
     // This is the main function to extract data to file
+    /**
+     *
+     * @param host Database host
+     * @param healthFileName Name of the health file
+     * @param curOrganization Current organization
+     */
     public static void mainExtractDataToFile(String host,String healthFileName , String curOrganization){
         String typeDaily="Daily";
         String typeWeekly="Weekly";
@@ -72,6 +78,15 @@ public class extractDataToFile{
         }
     }
 
+    /**
+     *
+     * @param detConfigList List of DetectorProperty
+     * @param con Database connection
+     * @param fileName Output file name
+     * @param startDate Start date
+     * @param endDate End date
+     * @return int [][] healthIndex
+     */
     public  static int [][] outputHealthAnalysisToFileByDay(List detConfigList,Connection con,
                                                File fileName,Date startDate,Date endDate) {
         // This function is to output health analysis (daily) to files
@@ -91,15 +106,15 @@ public class extractDataToFile{
             for (int i=0;i<detConfigList.size();i++) {
                 //Get the detector ID
                 detectorConfig.DetectorProperty tmpProperty = (detectorConfig.DetectorProperty) detConfigList.get(i);
-                int intID = tmpProperty.IntID;
-                int sensorID = tmpProperty.SensorID;
+                int intID = tmpProperty.getIntID();
+                int sensorID = tmpProperty.getSensorID();
                 int detectorID = intID * 100 + sensorID;
                 System.out.println(detectorID);
 
                 //Get the string for each detector
-                String detectorHealth=tmpProperty.IntName+","+tmpProperty.IntID+","+tmpProperty.County+","+
-                        tmpProperty.City+","+tmpProperty.RoadName+","+tmpProperty.Direction+","+tmpProperty.SensorID+
-                        ","+tmpProperty.Movement+","+tmpProperty.Status+","+tmpProperty.DetourRoute;
+                String detectorHealth=tmpProperty.getIntName()+","+tmpProperty.getIntID()+","+tmpProperty.getCounty()+","+
+                        tmpProperty.getCity()+","+tmpProperty.getRoadName()+","+tmpProperty.getDirection()+","+tmpProperty.getSensorID()+
+                        ","+tmpProperty.getMovement()+","+tmpProperty.getStatus()+","+tmpProperty.getDetourRoute();
                 //Loop for all days
                 Date tmpDay = startDate;
                 for (int j=0;j<numDay;j++){
@@ -161,6 +176,15 @@ public class extractDataToFile{
         return healthIndex;
     }
 
+    /**
+     *
+     * @param detConfigList List of DetectorProperty
+     * @param con Database connection
+     * @param fileName Output file name
+     * @param startDate Start date
+     * @param endDate End date
+     * @return int [][] healthIndex
+     */
     public  static int [][] outputHealthAnalysisToFileByDayLACO(List detConfigList,Connection con,
                                                             File fileName,Date startDate,Date endDate) {
         // This function is to output health analysis (daily) to files
@@ -180,15 +204,15 @@ public class extractDataToFile{
             for (int i=0;i<detConfigList.size();i++) {
                 //Get the detector ID
                 detectorConfig.DetectorProperty tmpProperty = (detectorConfig.DetectorProperty) detConfigList.get(i);
-                int intID = tmpProperty.IntID;
-                int sensorID = tmpProperty.SensorID;
+                int intID = tmpProperty.getIntID();
+                int sensorID = tmpProperty.getSensorID();
                 int detectorID = sensorID;
                 System.out.println("Intersection ID="+intID+" and Sensor ID="+detectorID);
 
                 //Get the string for each detector
-                String detectorHealth=tmpProperty.IntName+","+tmpProperty.IntID+","+tmpProperty.County+","+
-                        tmpProperty.City+","+tmpProperty.RoadName+","+tmpProperty.Direction+","+tmpProperty.SensorID+
-                        ","+tmpProperty.Movement;
+                String detectorHealth=tmpProperty.getIntName()+","+tmpProperty.getIntID()+","+tmpProperty.getCounty()+","+
+                        tmpProperty.getCity()+","+tmpProperty.getRoadName()+","+tmpProperty.getDirection()+","+tmpProperty.getSensorID()+
+                        ","+tmpProperty.getMovement();
                 //Loop for all days
                 Date tmpDay = startDate;
                 for (int j=0;j<numDay;j++){
@@ -250,6 +274,15 @@ public class extractDataToFile{
         return healthIndex;
     }
 
+    /**
+     *
+     * @param detConfigList List of DetectorProperty
+     * @param healthIndex int[][]
+     * @param fileNameWeekly Output file name
+     * @param fileNameWeeklyNum Output file name
+     * @param startDate Start date
+     * @param endDate End date
+     */
     public static void outputHealthAnalysisToFileByWeek(List detConfigList, int [][] healthIndex, File fileNameWeekly,
                                                         File fileNameWeeklyNum, Date startDate, Date endDate){
         // This function is to output health analysis (weekly) to files
@@ -309,7 +342,7 @@ public class extractDataToFile{
                     //System.out.println(k);
                     for (int j=0; j<healthIndex.length;j++){ //Loop for each detector
                         detectorConfig.DetectorProperty tmpProperty = (detectorConfig.DetectorProperty) detConfigList.get(j);
-                        String detour=tmpProperty.DetourRoute;
+                        String detour=tmpProperty.getDetourRoute();
                         if(detour.equals("YES")){
                             if(healthIndex[j][k]==-1)
                                 numNodataDetour=numNodataDetour+1;
@@ -353,6 +386,15 @@ public class extractDataToFile{
         }
     }
 
+    /**
+     *
+     * @param detConfigList List of DetectorProperty
+     * @param healthIndex int[][]
+     * @param fileNameWeekly Output file name
+     * @param fileNameWeeklyNum Output file name
+     * @param startDate Start date
+     * @param endDate End date
+     */
     public static void outputHealthAnalysisToFileByWeekLACO(List detConfigList, int [][] healthIndex, File fileNameWeekly,
                                                         File fileNameWeeklyNum, Date startDate, Date endDate){
         // This function is to output health analysis (weekly) to files
@@ -416,7 +458,7 @@ public class extractDataToFile{
                     //System.out.println(k);
                     for (int j=0; j<healthIndex.length;j++){ //Loop for each detector
                         detectorConfig.DetectorProperty tmpProperty = (detectorConfig.DetectorProperty) detConfigList.get(j);
-                        String detour=tmpProperty.City;
+                        String detour=tmpProperty.getCity();
                         if(detour.equals("Monrovia")){
                             if(healthIndex[j][k]==1)
                                 numGoodMonrovia=numGoodMonrovia+1;
@@ -472,6 +514,15 @@ public class extractDataToFile{
         }
     }
 
+    /**
+     *
+     * @param detConfigList List of DetectorProperty
+     * @param healthIndex int[][]
+     * @param fileNameWeekly Output file name
+     * @param fileNameWeeklyNum Output file name
+     * @param startDate Start date
+     * @param endDate End date
+     */
     public static void outputHealthAnalysisToFileByWeekPasadena(List detConfigList, int [][] healthIndex, File fileNameWeekly,
                                                             File fileNameWeeklyNum, Date startDate, Date endDate){
         // This function is to output health analysis (weekly) to files
@@ -527,7 +578,7 @@ public class extractDataToFile{
                     //System.out.println(k);
                     for (int j=0; j<healthIndex.length;j++){ //Loop for each detector
                         detectorConfig.DetectorProperty tmpProperty = (detectorConfig.DetectorProperty) detConfigList.get(j);
-                        String detour=tmpProperty.City;
+                        String detour=tmpProperty.getCity();
                         if(detour.equals("Pasadena")){
                             if(healthIndex[j][k]==1)
                                 numGoodPasadena=numGoodPasadena+1;

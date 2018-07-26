@@ -7,6 +7,11 @@ import settings.programSettings;
 
 public class loadProgramSettingsFromFile {
 
+    /**
+     *
+     * @param programSettingFile Configuration file
+     * @return programSettings
+     */
     public static programSettings loadProgramSettings(String programSettingFile) {
 
         programSettings cBlock=new programSettings();

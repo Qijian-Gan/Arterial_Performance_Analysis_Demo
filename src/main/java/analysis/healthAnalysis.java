@@ -16,6 +16,11 @@ import java.util.List;
  */
 public class healthAnalysis {
 
+    /**
+     *
+     * @param host Database host
+     * @param curOrganization Current organization
+     */
     public static void mainHealthAnalysisAndDataFiltering(String host,String curOrganization){
         // This function is to do data filtering: fromDate to toDate
         try {
@@ -106,6 +111,18 @@ public class healthAnalysis {
         }
     }
 
+    /**
+     *
+     * @param con Database connection
+     * @param organization Organization
+     * @param detectorID Detector ID
+     * @param interval Time Interval (seconds)
+     * @param year int
+     * @param month int
+     * @param day int
+     * @param healthThreshold HealthThreshold
+     * @param dataInput double[][]
+     */
     public static void mainHealthAnalysis(Connection con, String organization,int detectorID, int interval,int year, int month,int day, HealthThreshold healthThreshold,
                                           double [][] dataInput){
 
@@ -181,12 +198,36 @@ public class healthAnalysis {
             this.InconsisRateWithoutSpeed=_InconsisRateWithoutSpeed; // Inconsistency rate between flow and occupancy
             this.Health=_Health; // Health: good or bad
         }
-        public double MissingRate;
-        public double MaxZeroValue;
-        public double HighValueRate;
-        public int ConstantOrNot;
-        public double InconsisRateWithoutSpeed;
-        public int Health;
+        protected double MissingRate;
+        protected double MaxZeroValue;
+        protected double HighValueRate;
+        protected int ConstantOrNot;
+        protected double InconsisRateWithoutSpeed;
+        protected int Health;
+
+        public double getMissingRate() {
+            return MissingRate;
+        }
+
+        public double getMaxZeroValue() {
+            return MaxZeroValue;
+        }
+
+        public double getHighValueRate() {
+            return HighValueRate;
+        }
+
+        public int getConstantOrNot() {
+            return ConstantOrNot;
+        }
+
+        public double getInconsisRateWithoutSpeed() {
+            return InconsisRateWithoutSpeed;
+        }
+
+        public int getHealth() {
+            return Health;
+        }
     }
 
     public static class HealthThreshold{
@@ -201,14 +242,22 @@ public class healthAnalysis {
             this.InconsisRateWithoutSpeedThreshold=_InconsisRateWithoutSpeedThreshold; // Threshold for inconsistency rate
         }
 
-        double HighFlowValue;
+        protected double HighFlowValue;
 
-        double MissingRateThreshold;
-        double MaxZeroValuesThreshold;
-        double HighValueRateThreshold;
-        double InconsisRateWithoutSpeedThreshold;
+        protected double MissingRateThreshold;
+        protected double MaxZeroValuesThreshold;
+        protected double HighValueRateThreshold;
+        protected double InconsisRateWithoutSpeedThreshold;
     }
 
+    /**
+     *
+     * @param interval Time interval (seconds)
+     * @param measurements double[][]
+     * @param healthThreshold HealthThreshold
+     * @param numOfLane Number of lanes
+     * @return
+     */
     public static DetectorHealthMetrics checkDetectorHealthByDay(int interval, double [][] measurements,
                                                 HealthThreshold healthThreshold, int numOfLane){
         // This function is used to check the detector health by day
@@ -243,6 +292,16 @@ public class healthAnalysis {
 
     }
 
+    /**
+     *
+     * @param healthThreshold HealthThreshold
+     * @param missingRate Missing Rate
+     * @param highValueRate High value rate
+     * @param constantOrNot Constant or not
+     * @param maxLengthZeroValues Max length of zero values
+     * @param inconsisRate Inconsistency rate
+     * @return int health
+     */
     public static int determineGoodOrBad(HealthThreshold healthThreshold, double missingRate, double highValueRate,
                                          double constantOrNot, double maxLengthZeroValues, double inconsisRate){
         // This function is used to determine whether a detector is good or bad
@@ -258,6 +317,12 @@ public class healthAnalysis {
         return health;
     }
 
+    /**
+     *
+     * @param interval Time interval (seconds)
+     * @param measurements double [][]
+     * @return inconsisRate
+     */
     public static double checkInconsisRateWithoutSpeed(int interval, double [][] measurements){
         // This function is used to check the inconsistency rate between flow and occupancy
 
@@ -276,6 +341,12 @@ public class healthAnalysis {
     }
 
 
+    /**
+     *
+     * @param interval Time Interval (seconds)
+     * @param measurements double[][]
+     * @return maxLengthZeroValuesByHour
+     */
     public static double checkMaxLengthZeroValues(int interval, double [][] measurements){
         // This function is used to check the maximum length of zero values
 
@@ -311,6 +382,11 @@ public class healthAnalysis {
         return maxLengthZeroValuesByHour;
     }
 
+    /**
+     *
+     * @param measurements double[][]
+     * @return int constantOrNot
+     */
     public static int checkConstantOrNot(double [][] measurements){
         // THis function is used to check the input measurements are constant or not
 
@@ -346,6 +422,14 @@ public class healthAnalysis {
 
     }
 
+    /**
+     *
+     * @param interval Time interval (seconds)
+     * @param flowThreshold Flow threshold
+     * @param numOfLane Number of lanes
+     * @param measurements double[][]
+     * @return highValueRate
+     */
     public static double checkHighValueRate(int interval, double flowThreshold, int numOfLane,double[][] measurements){
         // This function is used to check the high value rate
 
@@ -367,6 +451,12 @@ public class healthAnalysis {
     }
 
 
+    /**
+     *
+     * @param interval Time interval(seconds)
+     * @param measurements double[][]
+     * @return missingRate
+     */
     public static double checkMissingRate(int interval, double [][] measurements){
         // This function is used to check the daily data missing rate
 

@@ -11,6 +11,11 @@ import java.io.File;
  */
 public class util
 {
+    /**
+     *
+     * @param dataInputArray List<double[]>
+     * @return dataOutput (double [][])
+     */
     public static double[][] convertArrayToMatrix(List<double[]> dataInputArray){
 
         double [][] dataOutput=new double[dataInputArray.size()][dataInputArray.get(0).length];
@@ -20,6 +25,11 @@ public class util
         return dataOutput;
     }
 
+    /**
+     *
+     * @param resultSet ResultSet
+     * @return List<double[]> dataOutput
+     */
     public static List<double[]> convertResultsetToArray(ResultSet resultSet){
 
         List<double[]> dataOutput=new ArrayList<double[]>();
@@ -51,6 +61,12 @@ public class util
         return dataOutput;
     }
 
+    /**
+     *
+     * @param tmpDate Date
+     * @param type Type of the output format
+     * @return dateNum (int)
+     */
     public static int dateToNumber(Date tmpDate, String type){
 
         SimpleDateFormat Year= new SimpleDateFormat("yyyy");
@@ -76,6 +92,12 @@ public class util
         return dateNum;
     }
 
+    /**
+     *
+     * @param date Date
+     * @param days int
+     * @return Calendar cal
+     */
     public static Date addDays(Date date, int days)
     {
         Calendar cal = Calendar.getInstance();
@@ -84,6 +106,11 @@ public class util
         return cal.getTime();
     }
 
+    /**
+     *
+     * @param inputArray double[]
+     * @return double
+     */
     public static double calculateMean(double[] inputArray) {
         // This function is to calculate the mean value
 
@@ -94,6 +121,11 @@ public class util
         return sum / inputArray.length;
     }
 
+    /**
+     *
+     * @param inputArray double[]
+     * @return double
+     */
     public static double calculateMedian(double [] inputArray){
         // This function is to calcualte the median value
 
@@ -110,6 +142,14 @@ public class util
         return median;
     }
 
+    /**
+     *
+     * @param inputMatrix double[][]
+     * @param colNumber int
+     * @param fromRow int
+     * @param toRow int
+     * @return outputArray(double[])
+     */
     public static double [] fromMatrixToArrayByColumn(double [][] inputMatrix, int colNumber, int fromRow, int toRow){
         // This function is to assign the value from a matrix to an array with a given column number
 
@@ -122,6 +162,11 @@ public class util
         return outputArray;
     }
 
+    /**
+     *
+     * @param input double[]
+     * @return double[]
+     */
     public static double [] copyValueWithoutPointerDouble(double [] input){
         double [] output=new double [input.length];
         for (int i=0;i<input.length;i++){

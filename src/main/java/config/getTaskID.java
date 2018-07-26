@@ -6,6 +6,10 @@ import java.util.Scanner;
  * Created by Qijian-Gan on 10/6/2017.
  */
 public class getTaskID {
+    /**
+     *
+     * @return int taskID
+     */
     public static int getTaskIDFromScreen(){
         int taskID=0;
         // Selection of type of tasks
