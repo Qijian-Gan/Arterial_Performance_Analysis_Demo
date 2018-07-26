@@ -27,6 +27,8 @@ card off, (iv) high value, (v) constant value, (vi) inconsistent data.
 - This module consists of two components : (i) front-end; and (ii) back-end. The front-end component handles all user requests.
 The back-end component performs data aggregation and generates outputs for the front-end queries. 
 - The performance metrics are aggregated from detector level to intersection level. 
+- Sample data files are provided in the "website" folder: (i) aggregated_intersection_metrics.zip, and
+(ii) intersection_metrics.zip.
 - The following diagnostic states can be displayed at the intersection or even corridor level: (i) missing rate, (ii) max 
 zero value, (iii) constant or not, (iv) inconsistent rate, (v) high value rate.
 - The following system-level performance metrics can be displayed at the intersection or even corridor level: (i) health, (ii) 
